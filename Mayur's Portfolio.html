@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayur Damamgar | Civil Engineering & Creative</title>
+    
+    <!-- Fonts: Playfair Display (Royal Serif) & Inter (Modern Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (for structure) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- GSAP for Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* --- Royal Engineering Variable System --- */
+        :root {
+            --charcoal: #121212;
+            --graphite: #1f1f1f;
+            --royal-blue: #4169e1;
+            --royal-blue-dim: #2a4494;
+            --platinum: #e5e7eb;
+            --silver: #a1a1aa;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --grid-line: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            background-color: var(--charcoal);
+            color: var(--platinum);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            cursor: none; /* Custom cursor handling */
+        }
+
+        /* --- Blueprint Grid Background --- */
+        .blueprint-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- Typography Classes --- */
+        .font-royal {
+            font-family: var(--font-heading);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Custom Cursor --- */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--royal-blue);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(65, 105, 225, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* Hover State for Cursor */
+        body.hovering .cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(65, 105, 225, 0.1);
+            border-color: var(--royal-blue);
+            backdrop-filter: blur(2px);
+        }
+
+        /* --- Glass Cards --- */
+        .glass-card {
+            background: rgba(31, 31, 31, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(65, 105, 225, 0.4);
+            box-shadow: 0 10px 40px -10px rgba(65, 105, 225, 0.15);
+        }
+
+        /* --- Engineering Accents --- */
+        .tech-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--royal-blue), transparent);
+            width: 0%; /* animate to 100 */
+            opacity: 0.7;
+        }
+
+        /* Mobile specific adjustments */
+        @media (hover: none) {
+            .cursor-dot, .cursor-outline { display: none; }
+            body { cursor: auto; }
+        }
+        
+        .selection-highlight::selection {
+            background: var(--royal-blue);
+            color: white;
+        }
+    </style>
+</head>
+<body class="selection-highlight">
+
+    <!-- Ambient Grid Background -->
+    <div class="blueprint-grid"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navigation (Minimal) -->
+    <nav class="fixed top-0 left-0 w-full p-6 md:p-10 flex justify-between items-center z-50 opacity-0 nav-element">
+        <div class="text-sm tracking-[0.2em] uppercase font-bold text-gray-400">MD.</div>
+        <div class="text-xs tracking-widest text-gray-500">EST. 2026</div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative w-full h-screen flex flex-col justify-center items-center px-6 overflow-hidden">
+        <div class="absolute top-1/2 left-0 w-full h-[1px] bg-gray-800 opacity-30 transform -translate-y-1/2"></div>
+        <div class="absolute left-1/2 top-0 h-full w-[1px] bg-gray-800 opacity-30 transform -translate-x-1/2"></div>
+
+        <div class="z-10 text-center max-w-4xl">
+            <h1 class="font-royal text-4xl md:text-7xl lg:text-8xl leading-tight mb-6 italic tracking-tight hero-text overflow-hidden">
+                <span class="inline-block transform translate-y-full opacity-0">Hello everyone,</span><br>
+                <span class="inline-block transform translate-y-full opacity-0 text-gradient not-italic">welcome to my profile.</span>
+            </h1>
+            
+            <div class="tech-line mx-auto mb-6"></div>
+
+            <p class="font-light text-xs md:text-base tracking-[0.3em] uppercase text-gray-400 hero-subtext opacity-0 transform translate-y-4">
+                Civil Engineering <span class="text-blue-500 mx-2">•</span> Creativity <span class="text-blue-500 mx-2">•</span> Culture
+            </p>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 scroll-indicator">
+            <span class="text-[10px] tracking-widest text-gray-500 uppercase">Explore</span>
+            <div class="w-[1px] h-12 bg-gradient-to-b from-blue-500 to-transparent"></div>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section class="py-16 md:py-32 px-6 md:px-20 relative max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            
+            <!-- Visual Element (Engineering Graphic) -->
+            <div class="relative about-visual opacity-0 transform translate-x-[-30px]">
+                <div class="w-full h-96 md:h-[500px] border border-gray-800 relative flex items-center justify-center overflow-hidden group">
+                    
+                    <!-- User Image -->
+                    <img src="WhatsApp Image 2026-01-17 at 1.34.07 PM.jpeg" alt="Mayur Damamgar" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out">
+                    
+                    <!-- Cinematic Overlay Gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent opacity-80"></div>
+                    
+                    <!-- Tech Decorators -->
+                    <div class="absolute bottom-4 left-4 text-xs font-mono text-gray-300 z-10 drop-shadow-md">
+                        LAT: 19.0760 N<br>LNG: 72.8777 E
+                    </div>
+                    <div class="absolute top-4 right-4 text-xs font-mono text-blue-400 z-10 bg-black/40 backdrop-blur-md px-3 py-1 border border-white/10">
+                         /// CREATIVE.STRUCTURE
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Content -->
+            <div class="about-content">
+                <h2 class="font-royal text-4xl md:text-5xl mb-8 leading-snug opacity-0 transform translate-y-8 trigger-about-title">
+                    Building Structures,<br>
+                    <span class="italic text-gray-400">Crafting Stories.</span>
+                </h2>
+                
+                <div class="space-y-6 text-gray-400 font-light leading-relaxed text-sm md:text-base opacity-0 transform translate-y-8 trigger-about-text">
+                    <p>
+                        Hey there, I am <strong class="text-white">Mayur Damamgar,</strong> I am a <strong class="text-white">Civil Engineering student</strong> driven by precision and stability, yet my mind wanders into the realms of narrative and rhythm. 
+                    </p>
+                    <p>
+                        Beyond the blueprints, I am a passionate <strong class="text-white">Writer</strong> and <strong class="text-white">Publicity Enthusiast</strong>. I believe in the power of branding and the impact of a well-told story.
+                    </p>
+                    <p>
+                        Deeply influenced by <strong class="text-white">Hip-Hop culture</strong>, I bring a raw, rhythmic creativity to everything I touch. I don't just build frameworks; I build presence.
+                    </p>
+                </div>
+
+                <!-- Tags -->
+                <div class="mt-10 flex flex-wrap gap-3 opacity-0 transform translate-y-8 trigger-about-tags">
+                    <span class="px-4 py-2 text-xs border border-gray-700 rounded-full hover:border-blue-500 hover:text-blue-400 transition-colors cursor-hover-target">Construction</span>
+                    <span class="px-4 py-2 text-xs border border-gray-700 rounded-full hover:border-blue-500 hover:text-blue-400 transition-colors cursor-hover-target">Media & PR</span>
+                    <span class="px-4 py-2 text-xs border border-gray-700 rounded-full hover:border-blue-500 hover:text-blue-400 transition-colors cursor-hover-target">Content Writing</span>
+                    <span class="px-4 py-2 text-xs border border-gray-700 rounded-full hover:border-blue-500 hover:text-blue-400 transition-colors cursor-hover-target">Culture</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIALS SECTION -->
+    <section class="py-16 md:py-24 px-6 md:px-20 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-blue-500 text-xs tracking-[0.3em] uppercase block mb-3">Connect</span>
+            <h2 class="font-royal text-4xl md:text-5xl text-white">Digital Presence</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/mayur-damamgar-518208202" target="_blank" class="glass-card p-8 rounded-lg group cursor-hover-target social-card opacity-0">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="bg-gray-800 p-3 rounded-full group-hover:bg-[#0077b5] transition-colors duration-300">
+                        <i class="fa-brands fa-linkedin-in text-xl text-white"></i>
+                    </div>
+                    <i class="fa-solid fa-arrow-right -rotate-45 text-gray-500 group-hover:text-white transition-colors"></i>
+                </div>
+                <h3 class="font-royal text-2xl mb-2">Professional</h3>
+                <p class="text-sm text-gray-400 font-light group-hover:text-gray-200 transition-colors">
+                    Click here to see the professional side of me. Engineering, Projects & Achievements.
+                </p>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/mayur.damamgar" target="_blank" class="glass-card p-8 rounded-lg group cursor-hover-target social-card opacity-0">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="bg-gray-800 p-3 rounded-full group-hover:bg-pink-600 transition-colors duration-300">
+                        <i class="fa-brands fa-instagram text-xl text-white"></i>
+                    </div>
+                    <i class="fa-solid fa-arrow-right -rotate-45 text-gray-500 group-hover:text-white transition-colors"></i>
+                </div>
+                <h3 class="font-royal text-2xl mb-2">Social</h3>
+                <p class="text-sm text-gray-400 font-light group-hover:text-gray-200 transition-colors">
+                    Click here to see the fun, unfiltered side. Life updates and creative captures.
+                </p>
+            </a>
+
+            <!-- Snapchat -->
+            <a href="https://www.snapchat.com/add/mdamamgar2019" target="_blank" class="glass-card p-8 rounded-lg group cursor-hover-target social-card opacity-0">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="bg-gray-800 p-3 rounded-full group-hover:bg-yellow-400 transition-colors duration-300">
+                        <i class="fa-brands fa-snapchat text-xl text-white"></i>
+                    </div>
+                    <i class="fa-solid fa-arrow-right -rotate-45 text-gray-500 group-hover:text-white transition-colors"></i>
+                </div>
+                <h3 class="font-royal text-2xl mb-2">Snapchat</h3>
+                <p class="text-sm text-gray-400 font-light group-hover:text-gray-200 transition-colors">
+                    Not very active here — but if you’re curious, feel free to follow.
+                </p>
+            </a>
+
+            <!-- Spotify -->
+            <a href="https://open.spotify.com/playlist/6bKKZVof3xc6hZL19QDyWV" target="_blank" class="glass-card p-8 rounded-lg group cursor-hover-target social-card opacity-0">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="bg-gray-800 p-3 rounded-full group-hover:bg-green-500 transition-colors duration-300">
+                        <i class="fa-brands fa-spotify text-xl text-white"></i>
+                    </div>
+                    <i class="fa-solid fa-music -rotate-45 text-gray-500 group-hover:text-white transition-colors"></i>
+                </div>
+                <h3 class="font-royal text-2xl mb-2">The Vibe</h3>
+                <p class="text-sm text-gray-400 font-light group-hover:text-gray-200 transition-colors">
+                    Explore my Spotify playlist. Mostly hip-hop — <span class="text-red-400">consider this a warning.</span>
+                </p>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#151515] py-12 border-t border-gray-800 mt-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-royal text-2xl italic text-gray-300 mb-4">Mayur Damamgar</h2>
+            <p class="text-xs tracking-[0.2em] text-gray-500 uppercase mb-6">Designed with precision, built with creativity.</p>
+            
+            <!-- Added Email Link -->
+            <a href="mailto:mayurdamamgar@gmail.com" class="inline-block text-gray-400 hover:text-blue-500 transition-colors text-sm tracking-widest border-b border-gray-800 hover:border-blue-500 pb-1 mb-8 cursor-hover-target">
+                mayurdamamgar@gmail.com
+            </a>
+
+            <div class="flex justify-center gap-6">
+                <a href="mailto:mayurdamamgar@gmail.com" class="text-gray-600 hover:text-blue-500 transition-colors cursor-hover-target"><i class="fa-regular fa-envelope"></i></a>
+                <a href="#" class="text-gray-600 hover:text-blue-500 transition-colors cursor-hover-target"><i class="fa-solid fa-link"></i></a>
+            </div>
+            
+            <p class="text-[10px] text-gray-700 mt-8">&copy; 2026 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // --- 1. Custom Cursor Logic ---
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        // Initial setup for speed
+        const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        const cursor = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            
+            // Instant movement for dot
+            gsap.set(cursorDot, { x: mouse.x, y: mouse.y });
+        });
+
+        // Smooth trailing movement for outline using GSAP ticker
+        gsap.ticker.add(() => {
+            const dt = 1.0 - Math.pow(1.0 - 0.2, gsap.ticker.deltaRatio());
+            cursor.x += (mouse.x - cursor.x) * dt;
+            cursor.y += (mouse.y - cursor.y) * dt;
+            gsap.set(cursorOutline, { x: cursor.x, y: cursor.y });
+        });
+
+        // Hover Effects
+        const hoverTargets = document.querySelectorAll('a, button, .cursor-hover-target');
+        hoverTargets.forEach(target => {
+            target.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            target.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
+        // --- 2. Animations using GSAP ---
+        
+        // Register ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Sequence
+        const heroTimeline = gsap.timeline();
+
+        heroTimeline
+            .to('.nav-element', { opacity: 1, duration: 1, ease: 'power2.out' })
+            .to('.hero-text span', {
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                stagger: 0.2,
+                ease: 'power3.out'
+            })
+            .to('.tech-line', {
+                width: '100px', // or whatever width looks best centered
+                duration: 1,
+                ease: 'expo.out'
+            }, "-=0.5")
+            .to('.hero-subtext', {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: 'power2.out'
+            }, "-=0.8")
+            .to('.scroll-indicator', {
+                opacity: 1,
+                duration: 1,
+                delay: 0.5
+            });
+
+        // About Section Animations
+        gsap.to('.about-visual', {
+            scrollTrigger: {
+                trigger: '.about-visual',
+                start: 'top 80%',
+            },
+            x: 0,
+            opacity: 1,
+            duration: 1.2,
+            ease: 'power3.out'
+        });
+
+        const aboutTextItems = ['.trigger-about-title', '.trigger-about-text', '.trigger-about-tags'];
+        aboutTextItems.forEach((item, index) => {
+            gsap.to(item, {
+                scrollTrigger: {
+                    trigger: '.about-content',
+                    start: 'top 75%',
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                delay: index * 0.2,
+                ease: 'power2.out'
+            });
+        });
+
+        // Social Cards Stagger
+        gsap.to('.social-card', {
+            scrollTrigger: {
+                trigger: '.social-card',
+                start: 'top 85%',
+            },
+            opacity: 1,
+            y: 0, // Reset any transform set in CSS if needed, currently CSS handles hover
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'back.out(1.2)',
+            onStart: () => {
+                // Ensure visibility manually on start just in case
+                document.querySelectorAll('.social-card').forEach(el => el.style.opacity = 1);
+            }
+        });
+        
+        // Ensure social cards start invisible for the GSAP animation to reveal them (redundancy check)
+        gsap.set('.social-card', { opacity: 0, y: 30 });
+
+    </script>
+</body>
+</html>
