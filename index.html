@@ -109,6 +109,7 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
         }
 
         .glass-card:hover {
@@ -166,7 +167,7 @@
             <div class="tech-line mx-auto mb-6"></div>
 
             <p class="font-light text-xs md:text-base tracking-[0.3em] uppercase text-gray-400 hero-subtext opacity-0 transform translate-y-4">
-                Civil Engineering <span class="text-blue-500 mx-2">•</span> Creativity <span class="text-blue-500 mx-2">•</span> Culture
+                Civil Engineering <span class="text-blue-500 mx-2">•</span> Entrepreneurship <span class="text-blue-500 mx-2">•</span> Culture
             </p>
         </div>
 
@@ -185,7 +186,7 @@
             <div class="relative about-visual opacity-0 transform translate-x-[-30px]">
                 <div class="w-full h-96 md:h-[500px] border border-gray-800 relative flex items-center justify-center overflow-hidden group bg-[#1a1a1a]">
                     
-                    <!-- User Image - Renamed to profile.jpeg for reliability -->
+                    <!-- User Image - Fallback included -->
                     <img src="profile.jpeg" alt="Mayur Damamgar" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out" onerror="this.style.display='none'; this.parentElement.innerHTML+='<div class=\'text-gray-500 flex flex-col items-center justify-center h-full w-full\'><i class=\'fa-solid fa-user text-4xl mb-2\'></i><span class=\'text-xs uppercase tracking-widest\'>Image Not Found</span></div>'">
                     
                     <!-- Cinematic Overlay Gradient -->
@@ -205,41 +206,69 @@
             <div class="about-content">
                 <h2 class="font-royal text-4xl md:text-5xl mb-8 leading-snug opacity-0 transform translate-y-8 trigger-about-title">
                     Building Structures,<br>
-                    <span class="italic text-gray-400">Crafting Stories.</span>
+                    <span class="italic text-gray-400">Crafting Solutions.</span>
                 </h2>
                 
                 <div class="space-y-6 text-gray-400 font-light leading-relaxed text-sm md:text-base opacity-0 transform translate-y-8 trigger-about-text">
                     <p>
-                        Hey there, I am <strong class="text-white">Mayur Damamgar,</strong> I am a <strong class="text-white">Civil Engineering student</strong> driven by precision and stability, yet my mind wanders into the realms of narrative and rhythm. 
+                        Hey there, I am <strong class="text-white">Mayur Damamgar,</strong> a <strong class="text-white">Civil Engineering student</strong> driven by precision and stability, yet my mind wanders into the realms of narrative and rhythm. 
                     </p>
                     <p>
-                        Beyond the blueprints, I am a passionate <strong class="text-white">Writer</strong> and <strong class="text-white">Publicity Enthusiast</strong>. I believe in the power of branding and the impact of a well-told story.
+                        I am the proud founder of <strong class="text-blue-400">"Neo draft solutions"</strong>, where we specialize in <strong class="text-white">Smart Identity & Custom Acrylic Solutions</strong>. We blend engineering accuracy with aesthetic appeal to redefine branding.
                     </p>
                     <p>
-                        Deeply influenced by <strong class="text-white">Hip-Hop culture</strong>, I bring a raw, rhythmic creativity to everything I touch. I don't just build frameworks; I build presence.
+                        Deeply influenced by <strong class="text-white">Hip-Hop culture</strong>, I bring a raw, rhythmic creativity to everything I touch—whether it's a blueprint or a branding strategy.
                     </p>
                 </div>
 
                 <!-- Tags -->
                 <div class="mt-10 flex flex-wrap gap-3 opacity-0 transform translate-y-8 trigger-about-tags">
+                    <span class="px-4 py-2 text-xs border border-gray-700 rounded-full hover:border-blue-500 hover:text-blue-400 transition-colors cursor-hover-target">Entrepreneur</span>
                     <span class="px-4 py-2 text-xs border border-gray-700 rounded-full hover:border-blue-500 hover:text-blue-400 transition-colors cursor-hover-target">Construction</span>
+                    <span class="px-4 py-2 text-xs border border-gray-700 rounded-full hover:border-blue-500 hover:text-blue-400 transition-colors cursor-hover-target">Branding</span>
                     <span class="px-4 py-2 text-xs border border-gray-700 rounded-full hover:border-blue-500 hover:text-blue-400 transition-colors cursor-hover-target">Media & PR</span>
-                    <span class="px-4 py-2 text-xs border border-gray-700 rounded-full hover:border-blue-500 hover:text-blue-400 transition-colors cursor-hover-target">Content Writing</span>
-                    <span class="px-4 py-2 text-xs border border-gray-700 rounded-full hover:border-blue-500 hover:text-blue-400 transition-colors cursor-hover-target">Culture</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SOCIALS SECTION -->
+    <!-- VENTURES & SOCIALS SECTION -->
     <section class="py-16 md:py-24 px-6 md:px-20 max-w-7xl mx-auto">
         <div class="text-center mb-16">
-            <span class="text-blue-500 text-xs tracking-[0.3em] uppercase block mb-3">Connect</span>
-            <h2 class="font-royal text-4xl md:text-5xl text-white">Digital Presence</h2>
+            <span class="text-blue-500 text-xs tracking-[0.3em] uppercase block mb-3">Portfolio & Connect</span>
+            <h2 class="font-royal text-4xl md:text-5xl text-white">Digital Ecosystem</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
+            <!-- Neo Draft Solutions -->
+            <a href="https://neodraftsolutions.github.io/neo/" target="_blank" class="glass-card p-8 rounded-lg group cursor-hover-target social-card opacity-0">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="bg-blue-600/20 p-3 rounded-full group-hover:bg-blue-600 transition-colors duration-300">
+                        <i class="fa-solid fa-lightbulb text-xl text-blue-400 group-hover:text-white"></i>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition-colors"></i>
+                </div>
+                <h3 class="font-royal text-2xl mb-2 text-white">Neo Draft Solutions</h3>
+                <p class="text-sm text-gray-400 font-light group-hover:text-gray-200 transition-colors">
+                    Founder of a Smart Identity & Custom Acrylic Solutions company. Click to explore our official website.
+                </p>
+            </a>
+
+            <!-- Phone / Contact Card -->
+            <a href="tel:7483232936" class="glass-card p-8 rounded-lg group cursor-hover-target social-card opacity-0 border-blue-500/20">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="bg-green-600/20 p-3 rounded-full group-hover:bg-green-600 transition-colors duration-300">
+                        <i class="fa-solid fa-phone text-xl text-green-400 group-hover:text-white"></i>
+                    </div>
+                    <div class="text-[10px] uppercase tracking-tighter text-blue-500 animate-pulse font-bold">Tap to Save</div>
+                </div>
+                <h3 class="font-royal text-2xl mb-2 text-white">+91 7483232936</h3>
+                <p class="text-sm text-gray-400 font-light group-hover:text-gray-200 transition-colors">
+                    Want to save my number? Just click here and it will be added directly to your contacts.
+                </p>
+            </a>
+
             <!-- LinkedIn -->
             <a href="https://www.linkedin.com/in/mayur-damamgar-518208202" target="_blank" class="glass-card p-8 rounded-lg group cursor-hover-target social-card opacity-0">
                 <div class="flex items-start justify-between mb-4">
@@ -248,9 +277,9 @@
                     </div>
                     <i class="fa-solid fa-arrow-right -rotate-45 text-gray-500 group-hover:text-white transition-colors"></i>
                 </div>
-                <h3 class="font-royal text-2xl mb-2">Professional</h3>
+                <h3 class="font-royal text-2xl mb-2 text-white">LinkedIn</h3>
                 <p class="text-sm text-gray-400 font-light group-hover:text-gray-200 transition-colors">
-                    Click here to see the professional side of me. Engineering, Projects & Achievements.
+                    Professional updates, engineering projects, and career milestones.
                 </p>
             </a>
 
@@ -262,23 +291,9 @@
                     </div>
                     <i class="fa-solid fa-arrow-right -rotate-45 text-gray-500 group-hover:text-white transition-colors"></i>
                 </div>
-                <h3 class="font-royal text-2xl mb-2">Social</h3>
+                <h3 class="font-royal text-2xl mb-2 text-white">Instagram</h3>
                 <p class="text-sm text-gray-400 font-light group-hover:text-gray-200 transition-colors">
-                    Click here to see the fun, unfiltered side. Life updates and creative captures.
-                </p>
-            </a>
-
-            <!-- Snapchat -->
-            <a href="https://www.snapchat.com/add/mdamamgar2019" target="_blank" class="glass-card p-8 rounded-lg group cursor-hover-target social-card opacity-0">
-                <div class="flex items-start justify-between mb-4">
-                    <div class="bg-gray-800 p-3 rounded-full group-hover:bg-yellow-400 transition-colors duration-300">
-                        <i class="fa-brands fa-snapchat text-xl text-white"></i>
-                    </div>
-                    <i class="fa-solid fa-arrow-right -rotate-45 text-gray-500 group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="font-royal text-2xl mb-2">Snapchat</h3>
-                <p class="text-sm text-gray-400 font-light group-hover:text-gray-200 transition-colors">
-                    Not very active here — but if you’re curious, feel free to follow.
+                    The visual diary. Life updates, creative captures, and culture.
                 </p>
             </a>
 
@@ -290,9 +305,22 @@
                     </div>
                     <i class="fa-solid fa-music -rotate-45 text-gray-500 group-hover:text-white transition-colors"></i>
                 </div>
-                <h3 class="font-royal text-2xl mb-2">The Vibe</h3>
+                <h3 class="font-royal text-2xl mb-2 text-white">The Vibe</h3>
                 <p class="text-sm text-gray-400 font-light group-hover:text-gray-200 transition-colors">
-                    Explore my Spotify playlist. Mostly hip-hop — <span class="text-red-400">consider this a warning.</span>
+                    Mostly hip-hop — a curation of rhythmic structures. <span class="text-red-400 font-bold">Listen at your own risk.</span>
+                </p>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:mayurdamamgar@gmail.com" class="glass-card p-8 rounded-lg group cursor-hover-target social-card opacity-0">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="bg-gray-800 p-3 rounded-full group-hover:bg-blue-500 transition-colors duration-300">
+                        <i class="fa-regular fa-envelope text-xl text-white"></i>
+                    </div>
+                </div>
+                <h3 class="font-royal text-2xl mb-2 text-white">Inquiries</h3>
+                <p class="text-sm text-gray-400 font-light group-hover:text-gray-200 transition-colors">
+                    For collaborations or business inquiries regarding Neo Draft Solutions.
                 </p>
             </a>
 
@@ -300,22 +328,27 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-[#151515] py-12 border-t border-gray-800 mt-20">
+    <footer class="bg-[#151515] py-16 border-t border-gray-800">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="font-royal text-2xl italic text-gray-300 mb-4">Mayur Damamgar</h2>
-            <p class="text-xs tracking-[0.2em] text-gray-500 uppercase mb-6">Designed with precision, built with creativity.</p>
+            <h2 class="font-royal text-3xl italic text-white mb-4">Mayur Damamgar</h2>
+            <p class="text-xs tracking-[0.2em] text-gray-500 uppercase mb-8">Founder, Neo Draft Solutions | Civil Engineer</p>
             
-            <!-- Added Email Link -->
-            <a href="mailto:mayurdamamgar@gmail.com" class="inline-block text-gray-400 hover:text-blue-500 transition-colors text-sm tracking-widest border-b border-gray-800 hover:border-blue-500 pb-1 mb-8 cursor-hover-target">
-                mayurdamamgar@gmail.com
-            </a>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 mb-10">
+                <a href="mailto:mayurdamamgar@gmail.com" class="text-gray-400 hover:text-blue-500 transition-colors text-sm tracking-widest border-b border-gray-800 hover:border-blue-500 pb-1 cursor-hover-target">
+                    mayurdamamgar@gmail.com
+                </a>
+                <a href="tel:7483232936" class="text-gray-400 hover:text-green-500 transition-colors text-sm tracking-widest border-b border-gray-800 hover:border-green-500 pb-1 cursor-hover-target">
+                    +91 7483232936
+                </a>
+            </div>
 
-            <div class="flex justify-center gap-6">
-                <a href="mailto:mayurdamamgar@gmail.com" class="text-gray-600 hover:text-blue-500 transition-colors cursor-hover-target"><i class="fa-regular fa-envelope"></i></a>
-                <a href="#" class="text-gray-600 hover:text-blue-500 transition-colors cursor-hover-target"><i class="fa-solid fa-link"></i></a>
+            <div class="flex justify-center gap-8 mb-12 text-xl">
+                <a href="https://neodraftsolutions.github.io/neo/" target="_blank" class="text-gray-600 hover:text-blue-500 transition-colors cursor-hover-target" title="Neo Draft Solutions"><i class="fa-solid fa-briefcase"></i></a>
+                <a href="https://www.linkedin.com/in/mayur-damamgar-518208202" target="_blank" class="text-gray-600 hover:text-blue-500 transition-colors cursor-hover-target"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/mayur.damamgar" target="_blank" class="text-gray-600 hover:text-pink-500 transition-colors cursor-hover-target"><i class="fa-brands fa-instagram"></i></a>
             </div>
             
-            <p class="text-[10px] text-gray-700 mt-8">&copy; 2026 All Rights Reserved.</p>
+            <p class="text-[10px] text-gray-700">&copy; 2026 Mayur Damamgar. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -325,19 +358,15 @@
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
         
-        // Initial setup for speed
         const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
         const cursor = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
         window.addEventListener('mousemove', (e) => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
-            
-            // Instant movement for dot
             gsap.set(cursorDot, { x: mouse.x, y: mouse.y });
         });
 
-        // Smooth trailing movement for outline using GSAP ticker
         gsap.ticker.add(() => {
             const dt = 1.0 - Math.pow(1.0 - 0.2, gsap.ticker.deltaRatio());
             cursor.x += (mouse.x - cursor.x) * dt;
@@ -345,7 +374,6 @@
             gsap.set(cursorOutline, { x: cursor.x, y: cursor.y });
         });
 
-        // Hover Effects
         const hoverTargets = document.querySelectorAll('a, button, .cursor-hover-target');
         hoverTargets.forEach(target => {
             target.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
@@ -353,13 +381,9 @@
         });
 
         // --- 2. Animations using GSAP ---
-        
-        // Register ScrollTrigger
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero Sequence
         const heroTimeline = gsap.timeline();
-
         heroTimeline
             .to('.nav-element', { opacity: 1, duration: 1, ease: 'power2.out' })
             .to('.hero-text span', {
@@ -370,7 +394,7 @@
                 ease: 'power3.out'
             })
             .to('.tech-line', {
-                width: '100px', // or whatever width looks best centered
+                width: '100px',
                 duration: 1,
                 ease: 'expo.out'
             }, "-=0.5")
@@ -386,7 +410,6 @@
                 delay: 0.5
             });
 
-        // About Section Animations
         gsap.to('.about-visual', {
             scrollTrigger: {
                 trigger: '.about-visual',
@@ -413,24 +436,18 @@
             });
         });
 
-        // Social Cards Stagger
         gsap.to('.social-card', {
             scrollTrigger: {
                 trigger: '.social-card',
                 start: 'top 85%',
             },
             opacity: 1,
-            y: 0, // Reset any transform set in CSS if needed, currently CSS handles hover
+            y: 0,
             duration: 0.8,
-            stagger: 0.15,
-            ease: 'back.out(1.2)',
-            onStart: () => {
-                // Ensure visibility manually on start just in case
-                document.querySelectorAll('.social-card').forEach(el => el.style.opacity = 1);
-            }
+            stagger: 0.1,
+            ease: 'back.out(1.2)'
         });
         
-        // Ensure social cards start invisible for the GSAP animation to reveal them (redundancy check)
         gsap.set('.social-card', { opacity: 0, y: 30 });
 
     </script>
